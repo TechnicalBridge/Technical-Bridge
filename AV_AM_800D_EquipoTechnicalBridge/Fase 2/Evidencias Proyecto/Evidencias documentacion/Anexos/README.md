@@ -322,16 +322,3 @@ La documentación técnica complementaria y archivos fuente del modelo 4+1 se en
 | **Vista Física** | Topología de despliegue Docker, orden de arranque y puertos. | [Diagramas/despliegue.png](Diagramas/despliegue.png)<br>[Diagrama de despliegue](Diagramas/despliegue.png) |
 
 ---
-
-## Documentación complementaria
-
-Para profundizar en aspectos específicos del proyecto, consultar:
-
-- **Reglas del negocio y modelo de comisiones:** [docs/negocio/reglas-negocio.md](docs/negocio/reglas-negocio.md)
-- **Requisitos no funcionales (Seguridad, rendimiento y disponibilidad):** [docs/arquitectura/requisitos-no-funcionales.md](docs/arquitectura/requisitos-no-funcionales.md)
-- **Configuración y perfiles Docker:** [docs/despliegue/docker.md](docs/despliegue/docker.md)
-- **Ejecución y cobertura de pruebas:** [docs/pruebas/README.md](docs/pruebas/README.md)
-- **Innovación y propuesta de valor:** [docs/negocio/innovacion.md](docs/negocio/innovacion.md)
-- **Recorrido guiado de demostración:** [docs/demo/recorrido-demostracion.md](docs/demo/recorrido-demostracion.md)
-- **Bitácora y estado del proyecto:** [docs/metodologia/estado-proyecto.md](docs/metodologia/estado-proyecto.md)
-- **Políticas de cortafuegos y dominios:** [docs/firewalls-dominios.md](docs/firewalls-dominios.md)
