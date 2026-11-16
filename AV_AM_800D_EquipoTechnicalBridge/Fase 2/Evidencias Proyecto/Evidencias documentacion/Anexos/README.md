@@ -36,7 +36,7 @@
   - [Diagrama de casos de uso](#diagrama-de-casos-de-uso)
   - [Diagramas entidad-relación (ER)](#diagramas-entidad-relación-er)
   - [Detalle de arquitectura en vistas 4+1](#detalle-de-arquitectura-en-vistas-41)
-- [Documentación complementaria](#documentación-complementaria)
+
 
 
 ---
