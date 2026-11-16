@@ -271,74 +271,41 @@ DataBridge está estructurado bajo una **arquitectura de microservicios orientad
 
 ### Diagrama de despliegue físico
 
-![Diagrama de Despliegue](docs/diagramas/img/despliegue.png)
+![Diagrama de Despliegue](Diagramas/despliegue.png)
 
 ---
 
-### Diagrama de secuencia del flujo principal
+### Diagrama de secuencia del flujo principal Deudor (Pago)
 
 
-```mermaid
-sequenceDiagram
-    actor D as Deudor
-    participant P as Portal (React)
-    participant Y as ms-payments
-    participant M as ms-debt
-    participant K as Pasarela (Khipu / Webpay/ Mercado Pago)
-    participant R as RabbitMQ
-    participant B as Banco Central (UF)
+![Diagrama de Casos de Uso](Diagramas/Secuencia_pago.png)
 
-    Note over D,P: 1. Autenticación y selección de deuda
-    D->>P: Ingresa RUT y código temporal
-    P-->>D: Retorna sesión con JWT firmado en ES256
-    D->>P: Selecciona deuda o cuotas y presiona "Pagar"
+---
+### Diagrama de secuencia del flujo principal Empresa (Carga de Cartera)
 
-    Note over P,Y: 2. Apertura del cobro
-    P->>Y: POST /api/payments/checkout
-    alt Deuda expresada en UF
-        Y->>B: Consulta UF oficial del día (si3.bcentral.cl)
-        B-->>Y: Retorna valor UF en pesos (CLP)
-    end
-    Y->>M: GET /internal/debts/{id} (con X-Internal-Key)
-    M-->>Y: Monto oficial verificado (capital + mora − descuento)
-    Y->>K: Inicia transacción con la pasarela seleccionada
-    K-->>Y: URL de redirección y token de pago
-    Y-->>P: Redirige al deudor a la pasarela
-
-    Note over D,K: 3. Ejecución del pago
-    D->>K: Realiza el pago en el entorno seguro de la pasarela
-    K-->>D: Retorna al portal tras finalizar
-
-    Note over P,Y: 4. Verificación y conciliación servidor a servidor
-    P->>Y: Solicita confirmación del estado del pago
-    Y->>K: Verifica transacción de servidor a servidor
-    K-->>Y: Estado aprobado y detalles de transacción
-    Y-->>P: "Pago aprobado" (comprobante generado)
-
-    Note over Y,M: 5. Desacoplamiento asíncrono
-    Y->>R: Publica evento "pago.confirmado"
-    R->>M: Entrega evento a ms-debt
-    M->>M: Aplica abono en cuotas y salda deuda si saldo = 0
-```
+![Diagrama de Casos de Uso](Diagramas/Secuencia_cartera.png)
 
 ---
 
 ### Diagrama de casos de uso
 
-![Diagrama de Casos de Uso](docs/diagramas/img/casos-de-uso.png)
+![Diagrama de Casos de Uso](Diagramas/caso-de-uso.png)
 
 ---
 
 ### Diagramas entidad-relación (ER)
 
 #### Base de datos `tb_auth`
-![ER tb_auth](docs/diagramas/img/entidad-relacion-tb-auth.png)
+
+![ER tb_auth](Diagramas/entidad-relacion-tb-auth.png)
 
 #### Base de datos `tb_debt`
-![ER tb_debt](docs/diagramas/img/entidad-relacion-tb-debt.png)
+
+![ER tb_debt](Diagramas/entidad-relacion-tb-debt.png)
 
 #### Base de datos `tb_payments`
-![ER tb_payments](docs/diagramas/img/entidad-relacion-tb-payments.png)
+
+![ER tb_payments](Diagramas/entidad-relacion.png)
 
 ---
 
@@ -348,11 +315,11 @@ La documentación técnica complementaria y archivos fuente del modelo 4+1 se en
 
 | Vista 4+1 | Contenido y Especificación | Documento y Ubicación |
 | :--- | :--- | :--- |
-| **Escenarios (+1)** | Casos de uso de cada actor (Deudor, Empresa, Admin, Sistemas y Reloj) y detalle de endpoints. | [docs/diagramas/casos-de-uso.md](docs/diagramas/casos-de-uso.md)<br>[Diagrama](docs/diagramas/img/casos-de-uso.png) |
-| **Vista Lógica** | Diagramas Entidad-Relación de las tres bases (`tb_auth`, `tb_debt`, `tb_payments`), clases y máquinas de estados. | [docs/diagramas/entidad-relacion.md](docs/diagramas/entidad-relacion.md)<br>[Diagramas ER](docs/diagramas/img/) |
-| **Vista de Procesos** | Secuencias de interacción y flujos de negocio BPMN. | [docs/diagramas/secuencia.md](docs/diagramas/secuencia.md)<br>[Diagrama de secuencia](docs/diagramas/img/secuencia-pago.png) |
-| **Vista de Desarrollo** | Componentes por paquetes, HATEOAS, DTOs y frontend. | [docs/diagramas/componentes.md](docs/diagramas/componentes.md)<br>[Diagrama de componentes](docs/diagramas/img/componentes.png) |
-| **Vista Física** | Topología de despliegue Docker, orden de arranque y puertos. | [docs/diagramas/despliegue.md](docs/diagramas/despliegue.md)<br>[Diagrama de despliegue](docs/diagramas/img/despliegue.png) |
+| **Escenarios (+1)** | Casos de uso de cada actor (Deudor, Empresa, Admin, Sistemas y Reloj) y detalle de endpoints. | [Diagramas/caso-de-uso.png](Diagramas/caso-de-uso.png)<br>[Diagrama](Diagramas/caso-de-uso.png) |
+| **Vista Lógica** | Diagramas Entidad-Relación de las tres bases (`tb_auth`, `tb_debt`, `tb_payments`), clases y máquinas de estados. | [docs/diagramas/entidad-relacion.md](Diagramas/entidad-relacion.png)<br>[Diagramas ER](Diagramas/) |
+| **Vista de Procesos** | Secuencias de interacción y flujos de negocio BPMN. | [docs/diagramas/secuencia.md](Diagramas/Secuencia_pago.png)<br>[Diagrama de secuencia](Diagramas/Secuencia_pago.png) |
+| **Vista de Desarrollo** | Componentes por paquetes, HATEOAS, DTOs y frontend. | [docs/diagramas/componentes.md](Diagramas/componentes.png)<br>[Diagrama de componentes](Diagramas/componentes.png) |
+| **Vista Física** | Topología de despliegue Docker, orden de arranque y puertos. | [docs/diagramas/despliegue.md](Diagramas/despliegue.png)<br>[Diagrama de despliegue](Diagramas/despliegue.png) |
 
 ---
 
