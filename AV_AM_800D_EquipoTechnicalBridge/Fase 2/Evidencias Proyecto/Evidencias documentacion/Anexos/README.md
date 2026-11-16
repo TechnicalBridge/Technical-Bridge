@@ -316,10 +316,10 @@ La documentación técnica complementaria y archivos fuente del modelo 4+1 se en
 | Vista 4+1 | Contenido y Especificación | Documento y Ubicación |
 | :--- | :--- | :--- |
 | **Escenarios (+1)** | Casos de uso de cada actor (Deudor, Empresa, Admin, Sistemas y Reloj) y detalle de endpoints. | [Diagramas/caso-de-uso.png](Diagramas/caso-de-uso.png)<br>[Diagrama](Diagramas/caso-de-uso.png) |
-| **Vista Lógica** | Diagramas Entidad-Relación de las tres bases (`tb_auth`, `tb_debt`, `tb_payments`), clases y máquinas de estados. | [docs/diagramas/entidad-relacion.md](Diagramas/entidad-relacion.png)<br>[Diagramas ER](Diagramas/) |
-| **Vista de Procesos** | Secuencias de interacción y flujos de negocio BPMN. | [docs/diagramas/secuencia.md](Diagramas/Secuencia_pago.png)<br>[Diagrama de secuencia](Diagramas/Secuencia_pago.png) |
-| **Vista de Desarrollo** | Componentes por paquetes, HATEOAS, DTOs y frontend. | [docs/diagramas/componentes.md](Diagramas/componentes.png)<br>[Diagrama de componentes](Diagramas/componentes.png) |
-| **Vista Física** | Topología de despliegue Docker, orden de arranque y puertos. | [docs/diagramas/despliegue.md](Diagramas/despliegue.png)<br>[Diagrama de despliegue](Diagramas/despliegue.png) |
+| **Vista Lógica** | Diagramas Entidad-Relación de las tres bases (`tb_auth`, `tb_debt`, `tb_payments`), clases y máquinas de estados. | [Diagramas/entidad-relacion.png](Diagramas/entidad-relacion.png)<br>[Diagramas ER](Diagramas/) |
+| **Vista de Procesos** | Secuencias de interacción y flujos de negocio BPMN. | [Diagramas/Secuencia_pago.png](Diagramas/Secuencia_pago.png)<br>[Diagrama de secuencia](Diagramas/Secuencia_pago.png) |
+| **Vista de Desarrollo** | Componentes por paquetes, HATEOAS, DTOs y frontend. | [Diagramas/componentes.png](Diagramas/componentes.png)<br>[Diagrama de componentes](Diagramas/componentes.png) |
+| **Vista Física** | Topología de despliegue Docker, orden de arranque y puertos. | [Diagramas/despliegue.png](Diagramas/despliegue.png)<br>[Diagrama de despliegue](Diagramas/despliegue.png) |
 
 ---
 
